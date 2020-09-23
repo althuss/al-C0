@@ -72,7 +72,7 @@ std::string Position::DebugString() const { return us_board_.DebugString(); }
 
 GameResult PositionHistory::ComputeGameResult() const {
   
-      std::cout << DebugString();
+      std::cout << Position::DebugString();
 
   const auto& board = Last().GetBoard();
   auto legal_moves = board.GenerateLegalMoves();

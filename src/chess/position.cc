@@ -27,6 +27,7 @@
 
 #include "chess/position.h"
 #include <cassert>
+#include <iostream>
 
 namespace lczero {
 
@@ -74,6 +75,9 @@ GameResult PositionHistory::ComputeGameResult() const {
   auto legal_moves = board.GenerateLegalMoves();
 
   if (legal_moves.empty()) {
+
+    std::cout << "Legal Moves is Empty";
+
     if (board.IsUnderCheck()) {
       // Checkmate.
       return IsBlackToMove() ? GameResult::WHITE_WON : GameResult::BLACK_WON;
@@ -83,6 +87,9 @@ GameResult PositionHistory::ComputeGameResult() const {
   }
 
   if (!board.HasAnyPieces()) {
+
+    std::cout << "Board Has no Pieces";
+
 	  return IsBlackToMove() ? GameResult::WHITE_WON : GameResult::BLACK_WON;
     }
   if (!board.HasMatingMaterial()) return GameResult::DRAW;

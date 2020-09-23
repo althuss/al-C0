@@ -71,9 +71,7 @@ bool Position::CanCastle(Castling castling) const {
 std::string Position::DebugString() const { return us_board_.DebugString(); }
 
 GameResult PositionHistory::ComputeGameResult() const {
-  
-      std::cout << Position::DebugString();
-
+ 
   const auto& board = Last().GetBoard();
   auto legal_moves = board.GenerateLegalMoves();
 

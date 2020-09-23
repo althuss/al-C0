@@ -77,8 +77,6 @@ GameResult PositionHistory::ComputeGameResult() const {
 
   if (legal_moves.empty()) {
 
-    std::cout << "Legal Moves is Empty";
-
     if (board.IsUnderCheck()) {
       // Checkmate.
       return IsBlackToMove() ? GameResult::WHITE_WON : GameResult::BLACK_WON;
@@ -88,9 +86,6 @@ GameResult PositionHistory::ComputeGameResult() const {
   }
 
   if (!board.HasAnyPieces()) {
-
-    std::cout << "Board Has no Pieces";
-
 	  return IsBlackToMove() ? GameResult::WHITE_WON : GameResult::BLACK_WON;
     }
 

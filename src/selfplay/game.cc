@@ -72,9 +72,6 @@ void SelfPlayGame::Play(int white_threads, int black_threads, bool training,
                         bool enable_resign) {
   bool blacks_move = false;
 
-    std::cout << "I am in SelfPlayGame::Play";
-
-
   // Do moves while not end of the game. (And while not abort_)
   while (!abort_) {
     game_result_ = tree_[0]->GetPositionHistory().ComputeGameResult();
@@ -83,6 +80,7 @@ void SelfPlayGame::Play(int white_threads, int black_threads, bool training,
     if (game_result_ != GameResult::UNDECIDED) {
   
   std::cout << "Game result is not UNDECIDED and I broke";		
+
   break;
    }
   
@@ -107,9 +105,6 @@ void SelfPlayGame::Play(int white_threads, int black_threads, bool training,
     }
 
     // Do search.
-
-std::cout << "I am doing the search in SelfPlayGame";
-
     search_->RunBlocking(blacks_move ? black_threads : white_threads);
     move_count_++;
     nodes_total_ += search_->GetTotalPlayouts();
@@ -203,9 +198,6 @@ float SelfPlayGame::GetWorstEvalForWinnerOrDraw() const {
 }
 
 void SelfPlayGame::Abort() {
-
-std::cout << "I am in SelfPlayGame::ABORT";
-
   std::lock_guard<std::mutex> lock(mutex_);
   abort_ = true;
   if (search_) search_->Abort();

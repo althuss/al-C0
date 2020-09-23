@@ -46,7 +46,7 @@ namespace lczero {
 using std::string;
 
 const char* ChessBoard::kStartposFen =
-    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w - - 0 1";
+    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
 const ChessBoard ChessBoard::kStartposBoard(ChessBoard::kStartposFen);
 

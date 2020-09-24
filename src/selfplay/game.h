@@ -36,6 +36,8 @@
 
 namespace lczero {
 
+std::string DebugString() const;
+
 struct SelfPlayLimits : SearchLimits {
   // Movetime
   std::int64_t movetime;

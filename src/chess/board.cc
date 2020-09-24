@@ -28,7 +28,7 @@
 #include "chess/board.h"
 
 #include <iostream>
-using namespace std;
+//using namespace std;
 #include <algorithm>
 #include <cctype>
 #include <cstdlib>

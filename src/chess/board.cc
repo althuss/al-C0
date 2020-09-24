@@ -1011,11 +1011,11 @@ void ChessBoard::SetFromFen(const std::string& fen, int* no_capture_ply,
 }
 
 bool ChessBoard::HasAnyPieces() const {
-  if ((our_pieces_).count() > 1 && (their_pieces_).count() > 1 ) {
-   return true;
- }
-  std::cout << DebugString();
-  return false;
+  if ((our_pieces_).count() < 2 || (their_pieces_).count() < 2 ) {
+   return false;
+  std::cout << DebugString(); 
+}
+  return true;
 }
 
 bool ChessBoard::HasMatingMaterial() const {

@@ -86,6 +86,7 @@ GameResult PositionHistory::ComputeGameResult() const {
   }
 
   if (!board.HasAnyPieces()) {
+       std::cout << "HasAnyPieces failed";
 	  return IsBlackToMove() ? GameResult::WHITE_WON : GameResult::BLACK_WON;
     }
 

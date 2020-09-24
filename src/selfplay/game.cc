@@ -29,6 +29,8 @@
 #include <algorithm>
 #include <iostream>
 #include "neural/writer.h"
+#include "chess/board.h"
+
 
 namespace lczero {
 

@@ -1018,6 +1018,9 @@ return false;
 }
 
 bool ChessBoard::HasMatingMaterial() const {
+
+  std::cout << DebugString();
+
   if (!rooks_.empty() || !pawns_.empty() || !queens_.empty()) {
     return true;
   }

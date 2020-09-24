@@ -1015,7 +1015,7 @@ bool ChessBoard::HasAnyPieces() const {
    return true;
  }
   std::cout << DebugString();
-return false;
+  return false;
 }
 
 bool ChessBoard::HasMatingMaterial() const {

@@ -1014,13 +1014,11 @@ bool ChessBoard::HasAnyPieces() const {
   if ((our_pieces_).count() > 1 && (their_pieces_).count() > 1 ) {
    return true;
  }
+  std::cout << DebugString();
 return false;
 }
 
 bool ChessBoard::HasMatingMaterial() const {
-
-  std::cout << DebugString();
-
   if (!rooks_.empty() || !pawns_.empty() || !queens_.empty()) {
     return true;
   }
@@ -1040,7 +1038,9 @@ bool ChessBoard::HasMatingMaterial() const {
 
 //  const bool light_bishop = bishops_.intersects(kLightSquares);
 //  const bool dark_bishop = bishops_.intersects(kDarkSquares);
-  return false;
+  
+  std::cout << DebugString();
+return false;
 }
 
 string ChessBoard::DebugString() const {

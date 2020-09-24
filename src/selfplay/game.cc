@@ -70,6 +70,57 @@ SelfPlayGame::SelfPlayGame(PlayerOptions player1, PlayerOptions player2,
   }
 }
 
+
+string ChessBoard::DebugString() const {
+  string result;
+  for (int i = 7; i >= 0; --i) {
+    for (int j = 0; j < 8; ++j) {
+      if (!our_pieces_.get(i, j) && !their_pieces_.get(i, j)) {
+        if (i == 2 && pawns_.get(0, j))
+          result += '*';
+        else if (i == 5 && pawns_.get(7, j))
+          result += '*';
+        else
+          result += '.';
+        continue;
+      }
+      if (our_king_ == i * 8 + j) {
+        result += 'K';
+        continue;
+      }
+      if (their_king_ == i * 8 + j) {
+        result += 'k';
+        continue;
+      }
+      char c = '?';
+      if ((pawns_ & kPawnMask).get(i, j)) {
+        c = 'p';
+      } else if (bishops_.get(i, j)) {
+          c = 'b';
+      } else if (queens_.get(i, j)) {
+          c = 'q';
+
+      } else if (rooks_.get(i, j)) {
+        c = 'r';
+      } else {
+        c = 'n';
+      }
+      if (our_pieces_.get(i, j)) c = std::toupper(c);
+      result += c;
+    }
+    if (i == 0) {
+      result += " " + castlings_.as_string();
+      result += flipped_ ? " (from black's eyes)" : " (from white's eyes)";
+      result += " Hash: " + std::to_string(Hash());
+    }
+    result += '\n';
+  }
+  return result;
+}
+
+
+
+
 void SelfPlayGame::Play(int white_threads, int black_threads, bool training,
                         bool enable_resign) {
   bool blacks_move = false;

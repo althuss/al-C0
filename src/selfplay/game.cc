@@ -85,7 +85,7 @@ void SelfPlayGame::Play(int white_threads, int black_threads, bool training,
   std::cout << "Game result is not UNDECIDED and I broke";	    
  
 
-//  break;
+ break;
    }
   
   // Initialize search.

@@ -28,7 +28,7 @@
 #include "chess/board.h"
 
 #include <iostream>
-//using namespace std;
+using namespace std;
 #include <algorithm>
 #include <cctype>
 #include <cstdlib>
@@ -46,7 +46,7 @@ namespace lczero {
 using std::string;
 
 const char* ChessBoard::kStartposFen =
-    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w - - 0 1";
 
 const ChessBoard ChessBoard::kStartposBoard(ChessBoard::kStartposFen);
 
@@ -1011,11 +1011,10 @@ void ChessBoard::SetFromFen(const std::string& fen, int* no_capture_ply,
 }
 
 bool ChessBoard::HasAnyPieces() const {
-  if ((our_pieces_).count() < 2 || (their_pieces_).count() < 2 ) {
-//  std::cout << DebugString(); 
-  return false;
-}
-  return true;
+  if ((our_pieces_).count() < 2 | (their_pieces_).count() < 2 ) {
+   return false;
+ }
+return true;
 }
 
 bool ChessBoard::HasMatingMaterial() const {
@@ -1032,7 +1031,13 @@ bool ChessBoard::HasMatingMaterial() const {
   }
 
   // Only kings and bishops remain.
-return false;
+
+//  constexpr BitBoard kLightSquares(0x55AA55AA55AA55AAULL);
+//  constexpr BitBoard kDarkSquares(0xAA55AA55AA55AA55ULL);
+
+//  const bool light_bishop = bishops_.intersects(kLightSquares);
+//  const bool dark_bishop = bishops_.intersects(kDarkSquares);
+  return false;
 }
 
 string ChessBoard::DebugString() const {

@@ -26,9 +26,7 @@
 */
 
 #include "chess/position.h"
-#include "chess/board.h"
 #include <cassert>
-#include <iostream>
 
 namespace lczero {
 
@@ -69,15 +67,13 @@ bool Position::CanCastle(Castling castling) const {
   return false;
 }
 
-
+std::string Position::DebugString() const { return us_board_.DebugString(); }
 
 GameResult PositionHistory::ComputeGameResult() const {
- 
   const auto& board = Last().GetBoard();
   auto legal_moves = board.GenerateLegalMoves();
 
   if (legal_moves.empty()) {
-
     if (board.IsUnderCheck()) {
       // Checkmate.
       return IsBlackToMove() ? GameResult::WHITE_WON : GameResult::BLACK_WON;
@@ -86,15 +82,13 @@ GameResult PositionHistory::ComputeGameResult() const {
     return IsBlackToMove() ? GameResult::WHITE_WON : GameResult::BLACK_WON;
   }
 
-  if (board.HasAnyPieces()) {
-   return GameResult::UNDECIDED;} else {     
-	 return IsBlackToMove() ? GameResult::WHITE_WON : GameResult::BLACK_WON;
+  if (!board.HasAnyPieces()) {
+	  return IsBlackToMove() ? GameResult::WHITE_WON : GameResult::BLACK_WON;
     }
-
-  if (!board.HasMatingMaterial()) {return GameResult::DRAW;}
-  if (Last().GetNoCaptureNoPawnPly() >= 100) {return GameResult::DRAW;}
-  if (Last().GetGamePly() >= 450) {return GameResult::DRAW;}
-  if (Last().GetRepetitions() >= 2) {return GameResult::DRAW;}
+  if (!board.HasMatingMaterial()) return GameResult::DRAW;
+  if (Last().GetNoCaptureNoPawnPly() >= 100) return GameResult::DRAW;
+  if (Last().GetGamePly() >= 450) return GameResult::DRAW;
+  if (Last().GetRepetitions() >= 2) return GameResult::DRAW;
 
   return GameResult::UNDECIDED;
 }

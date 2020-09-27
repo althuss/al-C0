@@ -27,10 +27,8 @@
 
 #include "selfplay/game.h"
 #include <algorithm>
-#include <iostream>
+
 #include "neural/writer.h"
-
-
 
 namespace lczero {
 
@@ -70,7 +68,6 @@ SelfPlayGame::SelfPlayGame(PlayerOptions player1, PlayerOptions player2,
   }
 }
 
-
 void SelfPlayGame::Play(int white_threads, int black_threads, bool training,
                         bool enable_resign) {
   bool blacks_move = false;
@@ -80,11 +77,9 @@ void SelfPlayGame::Play(int white_threads, int black_threads, bool training,
     game_result_ = tree_[0]->GetPositionHistory().ComputeGameResult();
 
     // If endgame, stop.
-    if (game_result_ != GameResult::UNDECIDED) {	    
-  break;
-   }
-  
-  // Initialize search.
+    if (game_result_ != GameResult::UNDECIDED) break;
+
+    // Initialize search.
     const int idx = blacks_move ? 1 : 0;
     if (!options_[idx].uci_options->Get<bool>(kReuseTreeId.GetId())) {
       tree_[idx]->TrimTreeAtHead();

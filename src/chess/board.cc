@@ -1039,7 +1039,7 @@ bool ChessBoard::HasMatingMaterial() const {
 //  const bool light_bishop = bishops_.intersects(kLightSquares);
 //  const bool dark_bishop = bishops_.intersects(kDarkSquares);
   
-  std::cout << DebugString();
+//  std::cout << DebugString();
 return false;
 }
 

@@ -69,7 +69,7 @@ bool Position::CanCastle(Castling castling) const {
   return false;
 }
 
-std::string Position::DebugString() const { return us_board_.DebugString(); }
+
 
 GameResult PositionHistory::ComputeGameResult() const {
  

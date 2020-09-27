@@ -80,9 +80,7 @@ void SelfPlayGame::Play(int white_threads, int black_threads, bool training,
     game_result_ = tree_[0]->GetPositionHistory().ComputeGameResult();
 
     // If endgame, stop.
-    if (game_result_ != GameResult::UNDECIDED) {
-  
-//  std::cout << "Game result is not UNDECIDED and I broke";	    
+    if (game_result_ != GameResult::UNDECIDED) {	    
   break;
    }
   

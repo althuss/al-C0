@@ -1032,14 +1032,6 @@ bool ChessBoard::HasMatingMaterial() const {
   }
 
   // Only kings and bishops remain.
-
-//  constexpr BitBoard kLightSquares(0x55AA55AA55AA55AAULL);
-//  constexpr BitBoard kDarkSquares(0xAA55AA55AA55AA55ULL);
-
-//  const bool light_bishop = bishops_.intersects(kLightSquares);
-//  const bool dark_bishop = bishops_.intersects(kDarkSquares);
-  
-//  std::cout << DebugString();
 return false;
 }
 

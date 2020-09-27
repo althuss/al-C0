@@ -91,10 +91,10 @@ GameResult PositionHistory::ComputeGameResult() const {
 	 return IsBlackToMove() ? GameResult::WHITE_WON : GameResult::BLACK_WON;
     }
 
-  if (!board.HasMatingMaterial()) return GameResult::DRAW;
-  if (Last().GetNoCaptureNoPawnPly() >= 100) return GameResult::DRAW;
-  if (Last().GetGamePly() >= 450) return GameResult::DRAW;
-  if (Last().GetRepetitions() >= 2) return GameResult::DRAW;
+  if (!board.HasMatingMaterial()) {return GameResult::DRAW;}
+  if (Last().GetNoCaptureNoPawnPly() >= 100) {return GameResult::DRAW;}
+  if (Last().GetGamePly() >= 450) {return GameResult::DRAW;}
+  if (Last().GetRepetitions() >= 2) {return GameResult::DRAW;}
 
   return GameResult::UNDECIDED;
 }

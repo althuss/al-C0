@@ -1011,7 +1011,7 @@ void ChessBoard::SetFromFen(const std::string& fen, int* no_capture_ply,
 }
 
 bool ChessBoard::HasAnyPieces() const {
-  if ((our_pieces_).count() < 2  {
+  if ((our_pieces_).count() < 2 ) {
    return false;
  }
 return true;

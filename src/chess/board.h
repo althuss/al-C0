@@ -172,6 +172,7 @@ class ChessBoard {
   }
   BitBoard our_king() const { return 1ull << our_king_.as_int(); }
   BitBoard their_king() const { return 1ull << their_king_.as_int(); }
+  BitBoard remaining_piece() const { return their_pieces_ - their_king_; }
   const Castlings& castlings() const { return castlings_; }
   bool flipped() const { return flipped_; }
 
@@ -204,6 +205,7 @@ class ChessBoard {
   // same for black pawns. Those "fake" pawns are not present in our_pieces_ and
   // their_pieces_ bitboards.
   BitBoard pawns_;
+  BoardSquare remaining_piece_;
   BoardSquare our_king_;
   BoardSquare their_king_;
   Castlings castlings_;

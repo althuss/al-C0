@@ -466,9 +466,6 @@ MoveList ChessBoard::GeneratePseudolegalMoves() const {
   continue;
     }
 
-
-
-
     bool processed_piece = false;
     // Rook
     if (rooks_.get(source)) {
@@ -1018,20 +1015,24 @@ return true;
 }
 
 bool ChessBoard::RecaptureTest() const { 
- remaining_piece_ = their_pieces_ - their_king_
- const int rprow = remaining_piece_.row();
- const int rpcol = remaining_piece_.col();
+if ((their_pieces_).count() < 3 ) {  
+  
+ for (auto source : their_pieces_) {
+      // King
+    if (source == their_king_) {  continue;}
+        const auto src_row = source.row();
+        const auto src_col = source.col();
   
 // Check if our king is next to remaining man
     const int row = our_king_.row();
     const int col = our_king_.col();
-    if (std::abs(rprow - row) <= 1 && std::abs(rpcol - col) <= 1) 
+    if (std::abs(src_row - row) <= 1 && std::abs(src_col - col) <= 1) 
       
 // Check if their king is next to remaining man
   {
     const int krow = their_king_.row();
     const int kcol = their_king_.col();
-    if (std::abs(rprow - krow) <= 1 && std::abs(rpcol - kcol) <= 1) 
+    if (std::abs(src_row - krow) <= 1 && std::abs(src_col - kcol) <= 1) 
 
 // Cannot recapture, it's Bare King
     { return false;} 
@@ -1041,8 +1042,12 @@ else
  }
 
 // Our king is far away from man, it's Bare King
-return false   
-} 
+return false;   
+ } 
+
+// More than one man left, it's Bare King  
+return false;
+}  
   
 bool ChessBoard::HasMatingMaterial() const {
   if (!rooks_.empty() || !pawns_.empty() || !queens_.empty()) {

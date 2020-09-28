@@ -205,7 +205,6 @@ class ChessBoard {
   // same for black pawns. Those "fake" pawns are not present in our_pieces_ and
   // their_pieces_ bitboards.
   BitBoard pawns_;
-  BitBoard remaining_piece_;
   BoardSquare our_king_;
   BoardSquare their_king_;
   Castlings castlings_;

@@ -94,8 +94,9 @@ class ChessBoard {
 
   // For Bare King I will need
   bool HasAnyPieces() const;
-  // and then define it in board.cc
-
+  // and 
+  bool RecaptureTest() const;
+  
   // Generates legal moves.
   MoveList GenerateLegalMoves() const;
   // Check whether pseudolegal move is legal.

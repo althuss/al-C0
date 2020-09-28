@@ -1017,6 +1017,33 @@ bool ChessBoard::HasAnyPieces() const {
 return true;
 }
 
+bool ChessBoard::RecaptureTest() const { 
+ remaining_piece_ = their_pieces_ - their_king_
+ const int rprow = remaining_piece_.row();
+ const int rpcol = remaining_piece_.col();
+  
+// Check if our king is next to remaining man
+    const int row = our_king_.row();
+    const int col = our_king_.col();
+    if (std::abs(rprow - row) <= 1 && std::abs(rpcol - col) <= 1) 
+      
+// Check if their king is next to remaining man
+  {
+    const int krow = their_king_.row();
+    const int kcol = their_king_.col();
+    if (std::abs(rprow - krow) <= 1 && std::abs(rpcol - kcol) <= 1) 
+
+// Cannot recapture, it's Bare King
+    { return false;} 
+else 
+// Their king is far away, it's a draw
+    {return true;}
+ }
+
+// Our king is far away from man, it's Bare King
+return false   
+} 
+  
 bool ChessBoard::HasMatingMaterial() const {
   if (!rooks_.empty() || !pawns_.empty() || !queens_.empty()) {
     return true;

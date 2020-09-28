@@ -1035,7 +1035,7 @@ if ((their_pieces_).count() < 3 ) {
     if (std::abs(src_row - krow) <= 1 && std::abs(src_col - kcol) <= 1) 
 
 // Cannot recapture, it's Bare King
-    { return false;} 
+    {return false;} 
 else 
 // Their king is far away, it's a draw
     {return true;}
@@ -1047,7 +1047,8 @@ return false;
 
 // More than one man left, it's Bare King  
 return false;
-}  
+ }  
+}
   
 bool ChessBoard::HasMatingMaterial() const {
   if (!rooks_.empty() || !pawns_.empty() || !queens_.empty()) {

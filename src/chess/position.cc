@@ -26,6 +26,7 @@
 */
 
 #include "chess/position.h"
+#include "chess/board.h"
 #include <cassert>
 
 namespace lczero {

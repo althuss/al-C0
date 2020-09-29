@@ -83,7 +83,8 @@ GameResult PositionHistory::ComputeGameResult() const {
   }
 
   if (!board.HasAnyPieces()) {
-	  return IsBlackToMove() ? GameResult::WHITE_WON : GameResult::BLACK_WON;
+	if (RecaptureTest()) return GameResult::DRAW; 
+	    return IsBlackToMove() ? GameResult::WHITE_WON : GameResult::BLACK_WON;
     }
   if (!board.HasMatingMaterial()) return GameResult::DRAW;
   if (Last().GetNoCaptureNoPawnPly() >= 100) return GameResult::DRAW;

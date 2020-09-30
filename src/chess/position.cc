@@ -84,7 +84,7 @@ GameResult PositionHistory::ComputeGameResult() const {
   }
 
   if (!board.HasAnyPieces()) {
-	if (RecaptureTest()) return GameResult::DRAW; 
+	if (board.RecaptureTest()) return GameResult::DRAW; 
 	    return IsBlackToMove() ? GameResult::WHITE_WON : GameResult::BLACK_WON;
     }
   if (!board.HasMatingMaterial()) return GameResult::DRAW;

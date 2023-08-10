@@ -37,6 +37,7 @@
 #include "neural/cache.h"
 #include "neural/network.h"
 #include "syzygy/syzygy.h"
+#include <condition_variable>
 #include "utils/logging.h"
 #include "utils/mutex.h"
 #include "utils/optional.h"
